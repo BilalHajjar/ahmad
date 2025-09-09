@@ -1,0 +1,1482 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أحمد محمد - مصور محترف | لحظات تتحول إلى ذكريات خالدة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap');
+    
+    :root {
+      --primary: #8A2BE2;
+      --secondary: #4B0082;
+      --accent: #FFD700;
+      --light-bg: #F8F9FA;
+      --light-card: #FFFFFF;
+      --light-text: #2D2D2D;
+      --light-text-secondary: #6C757D;
+      --dark-bg: #121212;
+      --dark-card: #1E1E1E;
+      --dark-text: #EDEDED;
+      --dark-text-secondary: #B0B0B0;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s ease;
+    }
+    
+    /* الوضع الفاتح (الإفتراضي) */
+    [data-theme="light"] {
+      --bg: var(--light-bg);
+      --card-bg: var(--light-card);
+      --text: var(--light-text);
+      --text-secondary: var(--light-text-secondary);
+    }
+    
+    /* الوضع المظلم */
+    [data-theme="dark"] {
+      --bg: var(--dark-bg);
+      --card-bg: var(--dark-card);
+      --text: var(--dark-text);
+      --text-secondary: var(--dark-text-secondary);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+      transition: var(--transition);
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.1), transparent 25%),
+                  radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1), transparent 25%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    [data-theme="dark"] body::before {
+      background: radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.08), transparent 25%),
+                  radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.08), transparent 25%);
+    }
+    
+    /* ===== التمرير السلس ===== */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* ===== التنسيقات العامة ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translateX(50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      font-size: 1.1rem;
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      font-size: 1rem;
+      border: none;
+      outline: none;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: var(--shadow);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(138, 43, 226, 0.2);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* ===== الشريط العلوي ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+    
+    [data-theme="dark"] header {
+      background: rgba(30, 30, 30, 0.95);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+    
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo i {
+      margin-left: 10px;
+      color: var(--accent);
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin: 0 15px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      padding: 5px 0;
+    }
+    
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transition: var(--transition);
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      margin-right: 15px;
+      transition: var(--transition);
+    }
+    
+    .theme-toggle:hover {
+      color: var(--primary);
+      transform: rotate(30deg);
+    }
+    
+    .hamburger {
+      display: none;
+      cursor: pointer;
+    }
+    
+    /* ===== قسم الهيرو ===== */
+    .hero {
+      padding: 180px 0 100px;
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(75, 0, 130, 0.05));
+      position: relative;
+      overflow: hidden;
+    }
+    
+    [data-theme="dark"] .hero {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.1));
+    }
+    
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    
+    .hero-text {
+      flex: 1;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero-image {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      animation: fadeInRight 1s ease;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+    
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      max-width: 500px;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .hero-social {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .hero-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      color: var(--primary);
+      font-size: 1.2rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+    
+    .hero-social a:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+    }
+    
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 50%;
+      border: 5px solid var(--card-bg);
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-image::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      opacity: 0.1;
+      z-index: 0;
+    }
+    
+    [data-theme="dark"] .hero-image::before {
+      opacity: 0.08;
+    }
+    
+    /* ===== قسم عن المصور ===== */
+    .about {
+      background: var(--card-bg);
+    }
+    
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+    }
+    
+    .about-image {
+      flex: 1;
+      position: relative;
+    }
+    
+    .about-image img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+    
+    .about-image::after {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 100%;
+      height: 100%;
+      border: 3px solid var(--primary);
+      border-radius: 15px;
+      z-index: -1;
+      opacity: 0.3;
+    }
+    
+    .about-text {
+      flex: 1;
+    }
+    
+    .about-title {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .about-title::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .about-desc {
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .stat-item {
+      display: flex;
+      align-items: center;
+      background: rgba(138, 43, 226, 0.05);
+      padding: 15px;
+      border-radius: 10px;
+    }
+    
+    [data-theme="dark"] .stat-item {
+      background: rgba(138, 43, 226, 0.1);
+    }
+    
+    .stat-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      margin-left: 15px;
+    }
+    
+    .stat-info h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+    
+    .stat-info p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    
+    /* ===== قسم الخدمات ===== */
+    .services {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.03), rgba(75, 0, 130, 0.03));
+    }
+    
+    [data-theme="dark"] .services {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(75, 0, 130, 0.05));
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    
+    .service-card {
+      padding: 30px;
+      text-align: center;
+      border-radius: 15px;
+      transition: var(--transition);
+      background: var(--card-bg);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 0;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      transition: var(--transition);
+      z-index: -1;
+      opacity: 0;
+    }
+    
+    .service-card:hover::before {
+      height: 100%;
+      opacity: 1;
+    }
+    
+    .service-card:hover {
+      color: white;
+      transform: translateY(-10px);
+    }
+    
+    .service-card:hover .service-icon,
+    .service-card:hover .service-price,
+    .service-card:hover .service-features li {
+      color: white;
+    }
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      background: rgba(138, 43, 226, 0.1);
+      color: var(--primary);
+      font-size: 1.8rem;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    [data-theme="dark"] .service-icon {
+      background: rgba(138, 43, 226, 0.2);
+    }
+    
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .service-price {
+      font-size: 1.2rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+    
+    .service-features {
+      list-style: none;
+      margin-bottom: 25px;
+      text-align: right;
+    }
+    
+    .service-features li {
+      margin-bottom: 10px;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      position: relative;
+      padding-right: 20px;
+    }
+    
+    .service-features li::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 0;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .service-card:hover .service-features li::before {
+      color: white;
+    }
+    
+    /* ===== قسم المميزات ===== */
+    .features {
+      background: var(--card-bg);
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    
+    .feature-card {
+      padding: 30px;
+      text-align: center;
+      border-radius: 15px;
+      transition: var(--transition);
+      background: rgba(138, 43, 226, 0.03);
+      border: 1px solid rgba(138, 43, 226, 0.1);
+    }
+    
+    [data-theme="dark"] .feature-card {
+      background: rgba(138, 43, 226, 0.1);
+      border: 1px solid rgba(138, 43, 226, 0.3);
+    }
+    
+    .feature-card:hover {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      transform: translateY(-10px);
+      box-shadow: var(--shadow);
+    }
+    
+    .feature-card:hover .feature-icon {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+    
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-size: 1.8rem;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .feature-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+    
+    .feature-card:hover h3 {
+      color: white;
+    }
+    
+    .feature-card p {
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    
+    .feature-card:hover p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* ===== قسم التواصل ===== */
+    .contact {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.05), rgba(75, 0, 130, 0.05));
+    }
+    
+    [data-theme="dark"] .contact {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.08), rgba(75, 0, 130, 0.08));
+    }
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+    }
+    
+    .contact-info {
+      padding: 30px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+    
+    .contact-info h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .contact-info h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(138, 43, 226, 0.1);
+      color: var(--primary);
+      border-radius: 50%;
+      font-size: 1.2rem;
+      margin-left: 15px;
+    }
+    
+    [data-theme="dark"] .contact-icon {
+      background: rgba(138, 43, 226, 0.2);
+    }
+    
+    .contact-text {
+      flex: 1;
+    }
+    
+    .contact-text h4 {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+    
+    .contact-text p {
+      font-size: 1.1rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    .contact-social {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .contact-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    
+    .contact-social a:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+    
+    .contact-form {
+      padding: 30px;
+      background: var(--card-bg);
+      border-radius: 15px;
+      box-shadow: var(--shadow);
+    }
+    
+    .contact-form h3 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    .contact-form h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: var(--card-bg);
+      color: var(--text);
+    }
+    
+    [data-theme="dark"] .form-input {
+      border-color: #444;
+    }
+    
+    .form-input:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
+    }
+    
+    textarea.form-input {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+    
+    .form-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3);
+    }
+    
+    /* ===== الفوتر ===== */
+    footer {
+      background: #0D001F;
+      color: white;
+      padding: 70px 0 20px;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    
+    .footer-col h4 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+      color: var(--accent);
+    }
+    
+    .footer-col h4::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+    }
+    
+    .footer-col p {
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+      transform: translateX(-5px);
+    }
+    
+    .footer-links a::before {
+      content: "\f105";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      margin-left: 10px;
+      color: var(--primary);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* ===== الرسوم المتحركة ===== */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    /* ===== التجاوب ===== */
+    @media (max-width: 992px) {
+      .hero-content,
+      .about-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .hero-text, .about-text {
+        order: 2;
+      }
+      
+      .hero-image, .about-image {
+        order: 1;
+        margin-bottom: 40px;
+      }
+      
+      .hero-buttons {
+        justify-content: center;
+      }
+      
+      .about-image::after {
+        display: none;
+      }
+      
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 15px 0;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 80px);
+        background: var(--card-bg);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      .nav-links.active {
+        right: 0;
+      }
+      
+      .nav-links li {
+        margin: 15px 0;
+      }
+      
+      .theme-toggle {
+        margin-right: 10px;
+      }
+      
+      .hamburger {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--text);
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <!-- ===== الشريط العلوي ===== -->
+  <header>
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">
+          <i class="fas fa-camera"></i>
+          أحمد محمد
+        </a>
+        
+        <ul class="nav-links">
+          <li><a href="#home">الرئيسية</a></li>
+          <li><a href="#about">عن المصور</a></li>
+          <li><a href="#services">الخدمات</a></li>
+          <li><a href="#features">لماذا أخترتني</a></li>
+          <li><a href="#contact">تواصل معي</a></li>
+        </ul>
+        
+        <div style="display: flex; align-items: center;">
+          <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+          </button>
+          <div class="hamburger">
+            <i class="fas fa-bars"></i>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== قسم الهيرو ===== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">أحمد محمد</h1>
+          <h2 class="hero-subtitle">مصور محترف</h2>
+          <p class="hero-desc">
+            أسعى لالتقاط اللحظات الثمينة وتحويلها إلى ذكريات خالدة من خلال عدستي.
+            متخصص في التصوير الشخصي والأحداث والمناسبات الخاصة.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">تواصل معي</a>
+            <a href="#portfolio" class="btn btn-outline">اطلع على أعمالي</a>
+          </div>
+          <div class="hero-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1569173413095-a951d38e8f58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="أحمد محمد - مصور محترف">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم عن المصور ===== -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">عن المصور</h2>
+      <p class="section-subtitle">قصة شغفي بالتصور الفوتوغرافي ورحلتي المهنية</p>
+      
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="استوديو التصوير">
+        </div>
+        
+        <div class="about-text">
+          <h3 class="about-title">قصة شغفي بالتصوير</h3>
+          <p class="about-desc">
+            مرحباً، أنا أحمد محمد، مصور محترف بخبرة تزيد عن 5 سنوات في مجال التصوير الفوتوغرافي. 
+            أؤمن بأن كل صورة تحكي قصة، وأسعى لالتقاط تلك القصص بطريقة فنية مميزة.
+          </p>
+          <p class="about-desc">
+            متخصص في التصوير الشخصي، تصوير الأحداث، والتصوير التجاري. 
+            أستخدم أحدث المعدات والتقنيات لضمان الحصول على أفضل النتائج التي تفوق توقعات عملائي.
+          </p>
+          <p class="about-desc">
+            شغفي بالتصوير بدأ منذ الصغر، وتطور ليصبح مهنة أُحبها وأتقنها. 
+            كل مشروع بالنسبة لي هو تحدٍ جديد وفرصة لإبداع شيء استثنائي.
+          </p>
+          
+          <div class="stats">
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-camera"></i>
+              </div>
+              <div class="stat-info">
+                <h3>500+</h3>
+                <p>مشروع مكتمل</p>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <div class="stat-info">
+                <h3>5+</h3>
+                <p>سنوات خبرة</p>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-smile"></i>
+              </div>
+              <div class="stat-info">
+                <h3>200+</h3>
+                <p>عميل راضي</p>
+              </div>
+            </div>
+            
+            <div class="stat-item">
+              <div class="stat-icon">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="stat-info">
+                <h3>50+</h3>
+                <p>جائزة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم الخدمات ===== -->
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">الخدمات المقدمة</h2>
+      <p class="section-subtitle">أقدم مجموعة شاملة من خدمات التصوير الاحترافي لتلبية جميع احتياجاتك</p>
+      
+      <div class="services-grid">
+        <!-- خدمة التصوير الشخصي -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-user"></i>
+          </div>
+          <h3>التصوير الشخصي</h3>
+          <p class="service-price">من 300 ريال</p>
+          <ul class="service-features">
+            <li>إضاءة احترافية</li>
+            <li>خلفيات متنوعة</li>
+            <li>تعديل احترافي</li>
+            <li>طباعة عالية الجودة</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">احجز الآن</a>
+        </div>
+        
+        <!-- خدمة تصوير الأحداث -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-glass-cheers"></i>
+          </div>
+          <h3>تصوير الأحداث</h3>
+          <p class="service-price">من 1500 ريال</p>
+          <ul class="service-features">
+            <li>تغطية كاملة للحدث</li>
+            <li>فريق متخصص</li>
+            <li>معدات احترافية</li>
+            <li>ألبوم رقمي</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">احجز الآن</a>
+        </div>
+        
+        <!-- خدمة التصوير التجاري -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3>التصوير التجاري</h3>
+          <p class="service-price">من 800 ريال</p>
+          <ul class="service-features">
+            <li>تصوير المنتجات والشركات</li>
+            <li>إبراز الهوية التجارية</li>
+            <li>صور مخصصة للإعلانات</li>
+            <li>جودة عالية للطباعة</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">احجز الآن</a>
+        </div>
+        
+        <!-- خدمة تصوير الطبيعة -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-mountain"></i>
+          </div>
+          <h3>تصوير الطبيعة</h3>
+          <p class="service-price">من 500 ريال</p>
+          <ul class="service-features">
+            <li>التقاط جمال المناظر الطبيعية</li>
+            <li>إضاءة طبيعية ساحرة</li>
+            <li>تعديل لوني احترافي</li>
+            <li>صور عالية الدقة</li>
+          </ul>
+          <a href="#contact" class="btn btn-outline">احجز الآن</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم المميزات ===== -->
+  <section class="features" id="features">
+    <div class="container">
+      <h2 class="section-title">لماذا تختارني؟</h2>
+      <p class="section-subtitle">مميزات تجعلني الخيار الأمثل لتصوير مناسباتك وأحداثك</p>
+      
+      <div class="features-grid">
+        <!-- ميزة -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>تسليم سريع</h3>
+          <p>تسليم الصور المعدلة في أقل من 48 ساعة مع الحفاظ على أعلى معايير الجودة</p>
+        </div>
+        
+        <!-- ميزة -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-camera"></i>
+          </div>
+          <h3>معدات حديثة</h3>
+          <p>أحدث كاميرات وأدوات التصوير المتقدمة لضمان الحصول على أفضل النتائج</p>
+        </div>
+        
+        <!-- ميزة -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3>خبرة مميزة</h3>
+          <p>أكثر من 5 سنوات في مجال التصوير الاحترافي مع مئات المشاريع الناجحة</p>
+        </div>
+        
+        <!-- ميزة -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>إبداع وإبتكار</h3>
+          <p>أقدم أفكارًا إبداعية وفريدة لتصوير مميز يبرز جمال اللحظات والتفاصيل</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم التواصل ===== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <h2 class="section-title">تواصل معي</h2>
+      <p class="section-subtitle">هل لديك مشروع تصوير في ذهنك؟ دعنا نتحدث ونحول رؤيتك إلى واقع مذهل</p>
+      
+      <div class="contact-content">
+        <!-- معلومات التواصل -->
+        <div class="contact-info">
+          <h3>معلومات التواصل</h3>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-text">
+              <h4>رقم الهاتف</h4>
+              <p>+966 50 123 4567</p>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-text">
+              <h4>البريد الإلكتروني</h4>
+              <p>ahmed.photographer@email.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-text">
+              <h4>الموقع</h4>
+              <p>الرياض، المملكة العربية السعودية</p>
+            </div>
+          </div>
+          
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-text">
+              <h4>ساعات العمل</h4>
+              <p>السبت - الخميس: 9:00 ص - 10:00 م</p>
+            </div>
+          </div>
+          
+          <div class="contact-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <!-- نموذج التواصل -->
+        <div class="contact-form">
+          <h3>أرسل رسالة</h3>
+          <form>
+            <div class="form-row">
+              <input type="text" class="form-input" placeholder="أدخل اسمك الكامل" required>
+              <input type="email" class="form-input" placeholder="example@email.com" required>
+            </div>
+            
+            <div class="form-row">
+              <input type="tel" class="form-input" placeholder="+966 50 123 4567" required>
+              <select class="form-input">
+                <option>اختر نوع الخدمة</option>
+                <option>التصوير الشخصي</option>
+                <option>تصوير الأحداث</option>
+                <option>التصوير التجاري</option>
+                <option>تصوير الطبيعة</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <textarea class="form-input" placeholder="اكتب لي عن مشروعك ومتطلباتك" maxlength="500" required></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit">إرسال الرسالة</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== الفوتر ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>عن المصور</h4>
+          <p>مصور محترف متخصص في التصوير الشخصي، تصوير الأحداث، والتصوير التجاري. أسعى لالتقاط اللحظات الثمينة وتحويلها إلى ذكريات خالدة.</p>
+        </div>
+        
+        <div class="footer-col">
+          <h4>روابط سريعة</h4>
+          <ul class="footer-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">عن المصور</a></li>
+            <li><a href="#services">الخدمات</a></li>
+            <li><a href="#features">لماذا أخترتني</a></li>
+            <li><a href="#contact">تواصل معي</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>الخدمات</h4>
+          <ul class="footer-links">
+            <li><a href="#">التصوير الشخصي</a></li>
+            <li><a href="#">تصوير الأحداث</a></li>
+            <li><a href="#">التصوير التجاري</a></li>
+            <li><a href="#">تصوير الطبيعة</a></li>
+            <li><a href="#">حزم التصوير المتكاملة</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>تابعني على</h4>
+          <div class="contact-social">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2023 أحمد محمد - مصور محترف. جميع الحقوق محفوظة</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // تفعيل القائمة المتنقلة
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.innerHTML = navLinks.classList.contains('active') ? 
+        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    
+    // إغلاق القائمة عند النقر على رابط
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // تبديل الوضع المظلم/الفاتح
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const body = document.body;
+    
+    // التحقق من التفضيل المحفوظ
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      body.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+    }
+    
+    // عند النقر على زر التبديل
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = body.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+    
+    // تحديث أيقونة الوضع
+    function updateThemeIcon(theme) {
+      if (theme === 'light') {
+        themeIcon.className = 'fas fa-moon';
+      } else {
+        themeIcon.className = 'fas fa-sun';
+      }
+    }
+  </script>
+</body>
+</html>
