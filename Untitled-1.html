@@ -1039,13 +1039,18 @@
   </style>
 </head>
 <body data-theme="light">
+  <!-- Loader -->
+  <div class="loader">
+    <div class="loader-circle"></div>
+  </div>
+
   <!-- ===== الشريط العلوي ===== -->
   <header>
     <div class="container">
       <nav class="navbar">
         <a href="#" class="logo">
           <i class="fas fa-camera"></i>
-          أحمد محمد
+          <span>أحمد محمد</span>
         </a>
         
         <ul class="nav-links">
@@ -1073,17 +1078,17 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-text">
-          <h1 class="hero-title">أحمد محمد</h1>
-          <h2 class="hero-subtitle">مصور محترف</h2>
-          <p class="hero-desc">
+          <h1 class="hero-title reveal">أحمد محمد</h1>
+          <h2 class="hero-subtitle reveal">مصور محترف</h2>
+          <p class="hero-desc reveal">
             أسعى لالتقاط اللحظات الثمينة وتحويلها إلى ذكريات خالدة من خلال عدستي.
             متخصص في التصوير الشخصي والأحداث والمناسبات الخاصة.
           </p>
-          <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary">تواصل معي</a>
+          <div class="hero-buttons reveal">
+            <a href="#contact" class="btn btn-primary pulse-animation">تواصل معي</a>
             <a href="#portfolio" class="btn btn-outline">اطلع على أعمالي</a>
           </div>
-          <div class="hero-social">
+          <div class="hero-social reveal">
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1092,7 +1097,7 @@
         </div>
         
         <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1569173413095-a951d38e8f58?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="أحمد محمد - مصور محترف">
+          <img src="a.jpg" alt="أحمد محمد - مصور محترف" class="float-animation">
         </div>
       </div>
     </div>
@@ -1101,31 +1106,31 @@
   <!-- ===== قسم عن المصور ===== -->
   <section class="about" id="about">
     <div class="container">
-      <h2 class="section-title">عن المصور</h2>
-      <p class="section-subtitle">قصة شغفي بالتصور الفوتوغرافي ورحلتي المهنية</p>
+      <h2 class="section-title reveal">عن المصور</h2>
+      <p class="section-subtitle reveal">قصة شغفي بالتصور الفوتوغرافي ورحلتي المهنية</p>
       
       <div class="about-content">
-        <div class="about-image">
+        <div class="about-image reveal">
           <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="استوديو التصوير">
         </div>
         
         <div class="about-text">
-          <h3 class="about-title">قصة شغفي بالتصوير</h3>
-          <p class="about-desc">
+          <h3 class="about-title reveal">قصة شغفي بالتصوير</h3>
+          <p class="about-desc reveal">
             مرحباً، أنا أحمد محمد، مصور محترف بخبرة تزيد عن 5 سنوات في مجال التصوير الفوتوغرافي. 
             أؤمن بأن كل صورة تحكي قصة، وأسعى لالتقاط تلك القصص بطريقة فنية مميزة.
           </p>
-          <p class="about-desc">
+          <p class="about-desc reveal">
             متخصص في التصوير الشخصي، تصوير الأحداث، والتصوير التجاري. 
             أستخدم أحدث المعدات والتقنيات لضمان الحصول على أفضل النتائج التي تفوق توقعات عملائي.
           </p>
-          <p class="about-desc">
+          <p class="about-desc reveal">
             شغفي بالتصوير بدأ منذ الصغر، وتطور ليصبح مهنة أُحبها وأتقنها. 
             كل مشروع بالنسبة لي هو تحدٍ جديد وفرصة لإبداع شيء استثنائي.
           </p>
           
           <div class="stats">
-            <div class="stat-item">
+            <div class="stat-item reveal">
               <div class="stat-icon">
                 <i class="fas fa-camera"></i>
               </div>
@@ -1135,7 +1140,7 @@
               </div>
             </div>
             
-            <div class="stat-item">
+            <div class="stat-item reveal">
               <div class="stat-icon">
                 <i class="fas fa-calendar-alt"></i>
               </div>
@@ -1145,7 +1150,7 @@
               </div>
             </div>
             
-            <div class="stat-item">
+            <div class="stat-item reveal">
               <div class="stat-icon">
                 <i class="fas fa-smile"></i>
               </div>
@@ -1155,7 +1160,7 @@
               </div>
             </div>
             
-            <div class="stat-item">
+            <div class="stat-item reveal">
               <div class="stat-icon">
                 <i class="fas fa-trophy"></i>
               </div>
@@ -1173,12 +1178,12 @@
   <!-- ===== قسم الخدمات ===== -->
   <section class="services" id="services">
     <div class="container">
-      <h2 class="section-title">الخدمات المقدمة</h2>
-      <p class="section-subtitle">أقدم مجموعة شاملة من خدمات التصوير الاحترافي لتلبية جميع احتياجاتك</p>
+      <h2 class="section-title reveal">الخدمات المقدمة</h2>
+      <p class="section-subtitle reveal">أقدم مجموعة شاملة من خدمات التصوير الاحترافي لتلبية جميع احتياجاتك</p>
       
       <div class="services-grid">
         <!-- خدمة التصوير الشخصي -->
-        <div class="service-card">
+        <div class="service-card reveal">
           <div class="service-icon">
             <i class="fas fa-user"></i>
           </div>
@@ -1194,7 +1199,7 @@
         </div>
         
         <!-- خدمة تصوير الأحداث -->
-        <div class="service-card">
+        <div class="service-card reveal">
           <div class="service-icon">
             <i class="fas fa-glass-cheers"></i>
           </div>
@@ -1210,7 +1215,7 @@
         </div>
         
         <!-- خدمة التصوير التجاري -->
-        <div class="service-card">
+        <div class="service-card reveal">
           <div class="service-icon">
             <i class="fas fa-briefcase"></i>
           </div>
@@ -1226,7 +1231,7 @@
         </div>
         
         <!-- خدمة تصوير الطبيعة -->
-        <div class="service-card">
+        <div class="service-card reveal">
           <div class="service-icon">
             <i class="fas fa-mountain"></i>
           </div>
@@ -1247,12 +1252,12 @@
   <!-- ===== قسم المميزات ===== -->
   <section class="features" id="features">
     <div class="container">
-      <h2 class="section-title">لماذا تختارني؟</h2>
-      <p class="section-subtitle">مميزات تجعلني الخيار الأمثل لتصوير مناسباتك وأحداثك</p>
+      <h2 class="section-title reveal">لماذا تختارني؟</h2>
+      <p class="section-subtitle reveal">مميزات تجعلني الخيار الأمثل لتصوير مناسباتك وأحداثك</p>
       
       <div class="features-grid">
         <!-- ميزة -->
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-icon">
             <i class="fas fa-bolt"></i>
           </div>
@@ -1261,7 +1266,7 @@
         </div>
         
         <!-- ميزة -->
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-icon">
             <i class="fas fa-camera"></i>
           </div>
@@ -1270,7 +1275,7 @@
         </div>
         
         <!-- ميزة -->
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-icon">
             <i class="fas fa-award"></i>
           </div>
@@ -1279,7 +1284,7 @@
         </div>
         
         <!-- ميزة -->
-        <div class="feature-card">
+        <div class="feature-card reveal">
           <div class="feature-icon">
             <i class="fas fa-lightbulb"></i>
           </div>
@@ -1293,12 +1298,12 @@
   <!-- ===== قسم التواصل ===== -->
   <section class="contact" id="contact">
     <div class="container">
-      <h2 class="section-title">تواصل معي</h2>
-      <p class="section-subtitle">هل لديك مشروع تصوير في ذهنك؟ دعنا نتحدث ونحول رؤيتك إلى واقع مذهل</p>
+      <h2 class="section-title reveal">تواصل معي</h2>
+      <p class="section-subtitle reveal">هل لديك مشروع تصوير في ذهنك؟ دعنا نتحدث ونحول رؤيتك إلى واقع مذهل</p>
       
       <div class="contact-content">
         <!-- معلومات التواصل -->
-        <div class="contact-info">
+        <div class="contact-info reveal">
           <h3>معلومات التواصل</h3>
           
           <div class="contact-detail">
@@ -1350,7 +1355,7 @@
         </div>
         
         <!-- نموذج التواصل -->
-        <div class="contact-form">
+        <div class="contact-form reveal">
           <h3>أرسل رسالة</h3>
           <form>
             <div class="form-row">
@@ -1373,7 +1378,7 @@
               <textarea class="form-input" placeholder="اكتب لي عن مشروعك ومتطلباتك" maxlength="500" required></textarea>
             </div>
             
-            <button type="submit" class="form-submit">إرسال الرسالة</button>
+            <button type="submit" class="form-submit pulse-animation">إرسال الرسالة</button>
           </form>
         </div>
       </div>
@@ -1384,12 +1389,12 @@
   <footer>
     <div class="container">
       <div class="footer-content">
-        <div class="footer-col">
+        <div class="footer-col reveal">
           <h4>عن المصور</h4>
           <p>مصور محترف متخصص في التصوير الشخصي، تصوير الأحداث، والتصوير التجاري. أسعى لالتقاط اللحظات الثمينة وتحويلها إلى ذكريات خالدة.</p>
         </div>
         
-        <div class="footer-col">
+        <div class="footer-col reveal">
           <h4>روابط سريعة</h4>
           <ul class="footer-links">
             <li><a href="#home">الرئيسية</a></li>
@@ -1400,7 +1405,7 @@
           </ul>
         </div>
         
-        <div class="footer-col">
+        <div class="footer-col reveal">
           <h4>الخدمات</h4>
           <ul class="footer-links">
             <li><a href="#">التصوير الشخصي</a></li>
@@ -1411,7 +1416,7 @@
           </ul>
         </div>
         
-        <div class="footer-col">
+        <div class="footer-col reveal">
           <h4>تابعني على</h4>
           <div class="contact-social">
             <a href="#"><i class="fab fa-instagram"></i></a>
@@ -1477,6 +1482,41 @@
         themeIcon.className = 'fas fa-sun';
       }
     }
+
+    // إخفاء Loader عند تحميل الصفحة
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      loader.classList.add('hidden');
+      
+      // إضافة تأثيرات الظهور عند التمرير
+      const revealElements = document.querySelectorAll('.reveal');
+      
+      function checkReveal() {
+        const windowHeight = window.innerHeight;
+        const revealPoint = 150;
+        
+        revealElements.forEach(element => {
+          const revealTop = element.getBoundingClientRect().top;
+          
+          if (revealTop < windowHeight - revealPoint) {
+            element.classList.add('active');
+          }
+        });
+      }
+      
+      window.addEventListener('scroll', checkReveal);
+      checkReveal(); // التحقق عند التحميل الأولي
+    });
+
+    // تأثير التمرير على الهيدر
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
   </script>
 </body>
 </html>
